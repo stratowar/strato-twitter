@@ -6,3 +6,4 @@ pom.xml.next
 release.properties
 /Bootstrap/Bootstrap1/nbproject/* 
  
+*/nbproject/*
