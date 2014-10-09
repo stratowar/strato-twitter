@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Example of Twitter Bootstrap 3 Modals</title>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style type="text/css">
+    .bs-example{
+    	margin: 20px;
+    }
+</style>
+</head>
+<body>
+<div class="bs-example">    
+    <a href="#myModal" data-toggle="modal" class="img-thumbnail">
+        <img src="cd-odyssey.jpg" class="img-responsive" alt="Cinque Terre" width="330" height="330">
+    </a>
+    
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Bigger picture</h4>
+                </div>
+                <div class="modal-body">
+                    <p><img src="Symphony_X_-_The_Odyssey - Front.jpg" class="img-responsive" alt="Symphony" width="712" height="712"></p>                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>     
+</body>
+</html>            

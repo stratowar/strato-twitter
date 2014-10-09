@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="demoApp">
+    <head>
+        <title>Using AngularJS Directives and Data Binding</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <!-- Placeholder for views -->
+            <div ng-view="">
+                
+            </div>
+        </div>
+        <script src="js/libs/angular.js/angular.js">            
+        </script>
+        <script src="js/libs/angular-route.js/angular-route.js">            
+        </script>
+        <script>            
+            var demoApp = angular.module('demoApp', []);         
+            
+            demoApp.factory('simpleFactory', function() {
+                var factory = {};
+                var customers = [
+                    {name: 'Nemanja Paripovic', city:'Novi Sad'}, 
+                    {name:'Danijela Males', city:'Futog'}, 
+                    {name:'John Devine', city:'Novi Sad'}
+                ];
+                factory.getCustomers = function(){
+                    return customers;
+                };
+                return factory;
+            });
+            demoApp.config(function ($routeProvider){
+               $routeProvider
+                       .when('/view1',
+                        {
+                            controller: 'SimpleController',
+                            templateUrl: 'Partials/View1.html'
+                        })
+                        .when('/view2',
+                        {
+                            controller: 'SimpleController',
+                            templateUrl: 'Partials/View2.html'
+                        })
+                        .otherwise({ redirectTo: '/view1' });                
+            });
+            demoApp.controller('SimpleController', function($scope, simpleFactory) {
+                $scope.customers = [];                
+                function init() {
+                    $scope.customers = simpleFactory.getCustomers();
+                }
+                init();
+                
+                $scope.addCustomer = function () {
+                    $scope.customers.push({
+                        name: $scope.newCustomer.name, 
+                        city: $scope.newCustomer.city 
+                    });
+                };
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="">
+    <head>
+        <title>Using AngularJS Directives and Data Binding</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-init="customers=[{name:'Nemanja Paripovic', city:'Novi Sad'}, {name:'John Smith', city:'Boston'}, {name:'Nemanja Bubic', city:'Kraljevo'}]">
+        Name:
+        <br>
+        <input type="text" ng-model="name" /> {{name}}
+        <br>
+        <ul>
+            <li ng-repeat="cust in customers | filter:name | orderBy:'city'">
+                {{cust.name | uppercase}} - {{cust.city | lowercase}}
+            </li>
+        </ul>
+        <script src="js/libs/angular.js/angular.js"></script>
+    </body>
+</html>

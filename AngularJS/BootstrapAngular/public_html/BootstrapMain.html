@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="application">
+    <head>
+        <meta charset="UTF-8">
+        <title>Twitter Bootstrap 3 Fixed Layout Example</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        
+        <link rel="stylesheet" href="css/bootstrap1.css" type="text/css">
+    </head>
+    <body ng-controller="controller">
+        <nav id="myNavbar" class="navbar navbar-default" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Main Page</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="nav navbar-nav">
+                        <li data-ng-repeat="page in pages">
+                            <a href="{{href}}" data-ng-click="loadPage(page)">{{ page.title}}</a>
+                        </li>                        
+                    </ul>
+                </div>
+            </div>
+        </nav>        
+        <div class="container">
+            
+            <div class="jumbotron" id="map_canvas">
+            <ng-include src="template"></ng-include>    
+            </div>
+            <div class="container">
+                <form class="form-inline" role="form">
+                    <div class="form-group">
+                      <label for="tweet">Compose new Tweet:</label>
+                      <input type="text" class="form-control" id="tweet" placeholder="Enter your tweet">
+                    </div>
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-12">
+                    <footer>
+                        <p>&copy; Copyright 2014 Stratowar</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="js/angular.js/angular.js"></script>
+        <script src="js/Script.js"></script>
+    </body>
+</html>                                		                       		

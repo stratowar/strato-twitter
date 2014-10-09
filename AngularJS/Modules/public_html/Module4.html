@@ -1,0 +1,36 @@
+<html ng-app="demoApp">
+    <head>
+        <title>Using AngularJS Directives and Data Binding</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div ng-controller="SimpleController">
+        Name:
+        <br>
+        <input type="text" ng-model="name" />
+        <br>
+        <ul>
+            <li ng-repeat="cust in customers | filter:name | orderBy:'city'">
+               {{cust.name}} - {{cust.city}} 
+            </li>
+        </ul>
+        </div>
+        <script src="js/libs/angular.js/angular.js">            
+        </script>
+        <script>            
+            var demoApp = angular.module('demoApp', []);
+            var controllers = {};   
+            controllers.SimpleController = function ($scope) {
+              $scope.customers = [
+                  {name: 'Nemanja Paripovic', city:'Novi Sad'}, 
+                  {name:'Danijela Males', city:'Futog'}, 
+                  {name:'John Devine', city:'Novi Sad'}
+              ];  
+            };
+            
+            demoApp.controller(controllers);
+            
+        </script>
+    </body>
+</html>
