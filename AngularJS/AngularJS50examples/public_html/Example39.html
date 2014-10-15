@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+Surfacing data on the country details page!!
+-->
+<html ng-app="countryApp">
+<head>
+        <title>AngularJS Example21</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div ng-view="">
+            
+        </div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js">            
+        </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular-route.min.js">            
+        </script>
+        <script>
+            var countryApp = angular.module('countryApp', ['ngRoute']);
+            
+            countryApp.config(function($routeProvider) {
+                $routeProvider.
+                        when('/', {
+                            templateUrl: 'snapshot39/country-list.html',
+                            controller: 'CountryListCtrl'
+                        }).
+                        when('/:countryName', {
+                            templateUrl: 'snapshot39/country-detail.html',
+                            controller: 'CountryDetailCtrl'
+                        }).
+                        otherwise({
+                            redirectTo: '/'
+                        });      
+            });
+            
+            countryApp.controller('CountryListCtrl', ['$scope', '$http', function (scope, http) {
+                http.get('snapshot39/countries.json').success(function(data) {
+                    scope.countries = data;
+                    scope.sortField = 'population';
+                    scope.reverse = true;
+                });                
+            }]);
+            
+            countryApp.controller('CountryDetailCtrl', function ($scope, $routeParams, $http) {
+                $scope.name = $routeParams.countryName;
+                $http.get('snapshot39/countries.json').success(function(data) {
+                    $scope.country = data.filter(function(entry) {
+                        return entry.name === $scope.name;
+                    })[0];
+                });
+            });
+        </script>
+    </body>
+</html>

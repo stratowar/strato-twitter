@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+Fetching JSON!!
+-->
+<html ng-app="countryApp">
+    <head>
+        <title>AngularJS Example20</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ng-controller="CountryCtrl">
+        <table>
+            <tr>
+                <th>
+                    Country
+                </th>
+                <th>
+                    Population
+                </th>
+            </tr>
+            <tr ng-repeat="country in countries">
+                <td>
+                    {{country.name}}
+                </td>
+                <td>
+                    {{country.population}}
+                </td>
+            </tr>
+        </table>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js">            
+        </script>
+        <script>
+            var countryApp = angular.module('countryApp', []);
+            countryApp.controller('CountryCtrl', function ($scope, $http) {
+                $http.get('countries.json').success(function(data) {
+                    $scope.countries = data;
+                });                
+            });
+        </script>
+    </body>
+</html>

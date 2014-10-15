@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+
+Caching JSON using cache option!!
+Added: Creating a custom filter to encode URIs, from example 44.
+-->
+<html ng-app="countryApp">
+<head>
+        <title>AngularJS Example21</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div ng-view="">
+            
+        </div>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.1/angular.min.js">            
+        </script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular-route.min.js">            
+        </script>
+        <script>
+            var countryApp = angular.module('countryApp', ['ngRoute']);
+            
+            countryApp.config(function($routeProvider) {
+                $routeProvider.
+                        when('/', {
+                            templateUrl: 'snapshot39/country-list.html',
+                            controller: 'CountryListCtrl'
+                        }).
+                        when('/:countryName', {
+                            templateUrl: 'snapshot39/country-detail.html',
+                            controller: 'CountryDetailCtrl'
+                        }).
+                        otherwise({
+                            redirectTo: '/'
+                        });      
+            });
+            
+            countryApp.factory('countries', function($http){
+                
+                function getData(callback) {
+                    $http({
+                        method: 'GET',
+                        url: 'countries.json',
+                        cache: true
+                    } 
+                ).success(callback);
+                }
+                
+                return {
+                    list: getData,
+                    
+                    find: function (name, callback) {
+                        getData(function(data) {
+                            var country = data.filter(function(entry) {
+                                return entry.name === name;
+                            })[0];
+                            callback(country);
+                        });
+                    }
+                };
+            });
+            
+            countryApp.controller('CountryListCtrl', function ($scope, countries) {
+                countries.list(function(countries) {
+                    $scope.countries = countries;                                    
+                });                
+            });
+            
+            countryApp.controller('CountryDetailCtrl', function ($scope, $routeParams, countries) {
+                countries.find($routeParams.countryName, function(country) {
+                    $scope.country = country;
+                });
+                });   
+                
+                countryApp.filter('encodeURI', function(){
+                    return window.encodeURI;
+                });
+    
+        </script>
+        26:12
+    </body>
+</html>
