@@ -1,2 +1,1 @@
-Just some basic things done in AngularJS. 
-In BootstrapMain.html file, of the BootstrapAngular project you can see the basic look of the future main project.
+I have added some projects involving AngularJS and Twitter API. These are the projects that I am exploring, and maybe I will implement some parts of them into my project.
