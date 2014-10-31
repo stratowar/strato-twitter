@@ -1,0 +1,26 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 26, 2014, 6:01:07 PM
+    Author     : Strato
+*/
+.container {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+#results .row {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+h1 {
+            color: #0084B4;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
