@@ -19,7 +19,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Main Page</a>
+                    <a class="navbar-brand" href="" ng-click="mainReload()">Main Page</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -37,10 +37,10 @@
             <ng-include src="template"></ng-include>    
             </div>
             <div class="container">
-                <form class="form-inline" role="form" method="post" action="post.php">
+                <form class="form-inline" role="form" name="form" id="form">
                     <div class="form-group">
                       <label for="tweet">Compose new Tweet:</label>
-                      <input type="text" class="form-control" name="tweet" placeholder="Enter your tweet">
+                      <input type="text" class="form-control" name="tweet" id="text" placeholder="Enter your tweet">
                     </div>
                     <button type="submit" class="btn btn-info">Submit</button>
                 </form>
@@ -56,7 +56,8 @@
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="js/libs/angular.js/angular.js"></script>    
+        <script src="js/libs/angular.js/angular.js"></script> 
+        <script src="js/libs/angular.js/angular-route.js"></script> 
         <script src="js/Script2.js"></script>   
     </body>
 </html>       

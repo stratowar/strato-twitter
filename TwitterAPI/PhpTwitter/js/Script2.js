@@ -1,17 +1,17 @@
-var twitterApp = angular.module('application', []);
+var twitterApp = angular.module('application', ['ngRoute']);
 
-twitterApp.controller('controller', function ($scope, $templateCache, $http, $location) {
+twitterApp.controller('controller', function ($route, $scope, $templateCache, $http, $location) {
     $scope.template = '';
     $scope.html = '';
     $scope.pages = [
         {title: 'Twitter', url: 'First.html'},
         {title: 'User', url: 'User.html'}
     ];
-
-    $scope.loadPage = function (page) {
-        if (page.href) {
+    
+    $scope.loadPage = function (page) {        
+        if (page.href){           
             document.location = page.href; //Load new page
-                        }
+        }
     $scope.template = page.url;
     $http({method: 'GET', url: page.url, cache: $templateCache})
         .success(function (html) {
@@ -22,6 +22,29 @@ twitterApp.controller('controller', function ($scope, $templateCache, $http, $lo
             $scope.html = 'Unable to load code: ' + status;
         });
     };
+    $(function () {
+
+        $('form').on('submit', function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: 'http://localhost/PhpTwitterNew/post.php',
+            data: $('form').serialize(),
+            success: function () {
+              alert('Tweet was sent');             
+              angular.element("input#text").val('');  
+              window.location.reload();
+            }
+          });
+
+        });
+
+      });
+      $scope.mainReload = function() {
+          window.location.reload();
+      };
 });
 twitterApp.controller('UserController', ['$scope', '$http', '$templateCache',
     function($scope, $http, $templateCache) {
@@ -47,12 +70,34 @@ twitterApp.controller('UserController', ['$scope', '$http', '$templateCache',
         $scope.method = method;
         $scope.url = url;
       };
+      
+      $(function () {
+
+        $('form').on('submit', function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: 'http://localhost/PhpTwitterNew/post.php',
+            data: $('form').serialize(),
+            success: function () {
+           //   alert('Tweet was sent');
+              angular.element("input#text").val('');
+              window.location.reload();
+              //location.reload;
+            }
+          });
+
+        });
+
+      });
     }]);
 twitterApp.controller('TweeterController', ['$scope', '$http', '$templateCache',
     function($scope, $http, $templateCache) {
       $scope.method = 'GET';
-      $scope.url = 'index.php';  
-      $scope.fetch = function() {
+      $scope.url = 'timeline_response.php';  
+      //$scope.fetch = function() {
         $scope.code = null;
         $scope.response = null;
 
@@ -65,10 +110,33 @@ twitterApp.controller('TweeterController', ['$scope', '$http', '$templateCache',
             $scope.data = data || "Request failed";
             $scope.status = status;
         });
-      };
+     // };
 
       $scope.updateModel = function(method, url) {
         $scope.method = method;
         $scope.url = url;
-      };
+      };     
+      
+      $(function () {
+
+        $('form').on('submit', function (e) {
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'post',
+            url: 'http://localhost/PhpTwitterNew/post.php',
+            data: $('form').serialize(),
+            success: function () {
+             // alert('Tweet was sent');
+              angular.element("input#text").val('');
+              window.location.reload();
+              //location.reload;
+            }
+          });
+
+        });
+
+      });
+      
     }]);

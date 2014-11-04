@@ -6,8 +6,8 @@ $twitteruser = "stratowar";
 $notweets = 10;
 $consumerkey = "GyMq5aB6WcBDGqgOHzvjRACqD";
 $consumersecret = "Z9SjTNSZ1XlYK52UbpI7DkmB6DbZJBPB6pKSDoGoEBvZ9qoyE7";
-$accesstoken = "2799661822-ZY0gDZv8nLE74EyFGgPPCSdIuqBWEjdmcXGDAaV";
-$accesstokensecret = "QvxNF6j243oJcFqlCOeDMlbkP5mbJfR5BpbQctU5L9kY0";
+$accesstoken = "2799661822-1Z6PtHHU3QAF7HDe5aNlkWeEWINAgK337uBUFYt";
+$accesstokensecret = "J6WNPzn5U97RMF5UHVdtqU4Htf15Y94xI7ZSxhLrPBYA3";
  
 function getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oauth_token_secret) {
   $connection = new TwitterOAuth($cons_key, $cons_secret, $oauth_token, $oauth_token_secret);
