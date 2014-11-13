@@ -1,6 +1,6 @@
 13.11.
-I have made one new filter in app.js file, called "links". Its purpose is to find the words in tweets beginning with @, or # and to replace that word with clickable link.
-Also, I had to add the "linky" filter from the ngSanitize module, to make plain text to be seen as links.
+I have made one new filter in app.js file, called "links". Its purpose is to find the words in tweets beginning with @, or # and to replace that word with a clickable link.
+Also, I had to add the "linky" filter from the ngSanitize module, to make plain text seen as links.
 
 --------------------------------------------------------------------------------------------------------------------------------
 
