@@ -93,7 +93,7 @@
                         </small>
                         <br>
                         <h4> 
-                            {{t.text}} 
+                            <div ng-bind-html="t.text | linky | links"></div>
                         </h4>                     
                         <div id="{{t.id_str}}">                        
                             <div class="tweet_body" ng-bind="t.id_str" style="display: none;">
@@ -109,6 +109,13 @@
                 
             </div>
         </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <footer>
+                    <p>&copy; Copyright 2014 Stratowar</p>
+                </footer>
+            </div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -118,5 +125,6 @@
     <script src="js/controller.js"></script>
     <script src="js/services.js"></script>    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/angular-sanitize.js"></script>
 </body>
 </html>

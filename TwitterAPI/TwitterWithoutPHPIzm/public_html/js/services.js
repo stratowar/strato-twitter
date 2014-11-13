@@ -29,7 +29,7 @@ angular.module('twitterApp.services', []).factory('twitterService', function($q)
         getLatestTweets: function () {
             //create a deferred object using Angular's $q service
             var deferred = $q.defer();
-            var promise = authorizationResult.get('/1.1/statuses/user_timeline.json?user_id=stratowar&screen_name=Nemanja%20Paripovic').done(function(data) { 
+            var promise = authorizationResult.get('/1.1/statuses/user_timeline.json?user_id=stratowar&screen_name=Nemanja%20Paripovic?include_entities=true').done(function(data) { 
                 // https://dev.twitter.com/docs/api/1.1/get/statuses/home_timeline
                 // when the data is retrieved resolved the deferred object
                 deferred.resolve(data);
@@ -39,13 +39,7 @@ angular.module('twitterApp.services', []).factory('twitterService', function($q)
         },
         postTweet: function (tweet) {
             //create a deferred object using Angular's $q service
-            var deferred = $q.defer();
-            //$document.ready(
-            //        function(){
-            //            $("#newTweetButton").click(function(){
-            
-            //            });
-            //        });
+            var deferred = $q.defer();            
             var promise = authorizationResult.post('/1.1/statuses/update.json?status=' + tweet).done(function(data) { 
                 // when the data is retrieved resolved the deferred object
                 deferred.resolve(data);
@@ -63,7 +57,8 @@ angular.module('twitterApp.services', []).factory('twitterService', function($q)
             });
             //return the promise of the deferred object
             return deferred.promise;
-        }
+        }       
+        
         
     };
 });
