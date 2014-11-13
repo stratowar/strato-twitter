@@ -2,6 +2,8 @@
 I have made one new filter in app.js file, called "links". Its purpose is to find the words in tweets beginning with @, or # and to replace that word with clickable link.
 Also, I had to add the "linky" filter from the ngSanitize module, to make plain text to be seen as links.
 
+--------------------------------------------------------------------------------------------------------------------------------
+
 04.11.
 Added one new project (JavaTwitter). It is based on TwitterWithoutPHP project, but it is using JSP to implement and open index page of the project. I have made new library, called HTML, and used it to make coding on the JSP page easier.
 
