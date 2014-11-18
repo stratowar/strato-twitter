@@ -1,6 +1,7 @@
 18.11.
 I have added the final version of the PhpTwitter project (PhpTwitterFinal inside the TwitterAPI folder, on the TwitterAPI branch) . In this version I have improved the presentation of tweets, added delete option, improved the User page, and added the Following (trending) page. There is an option for viewing the bigger picture of every user which has posted the tweet. Also you can post a tweet with the hashtag, @, and with Serbian letters. The links filter from TwitterWithoutPHP project is also included.
 
+--------------------------------------------------------------------------------------------------------------------------------
 
 13.11.
 I have made one new filter in app.js file, called "links". Its purpose is to find the words in tweets beginning with @, or # and to replace that word with a clickable link.
