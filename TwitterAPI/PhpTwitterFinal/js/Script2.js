@@ -55,23 +55,27 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
                     window.location.reload();
                 }
             });
-
         });
-
     });
-    /*
-    $scope.mainReload = function() {
-        window.location.reload();
-    };
     
     $scope.forwardPicture = function (picture_id) {
            var str = picture_id.replace(/_normal./g, '.');
-           console.log(str);
-           return str;
-       };
-       $scope.picture = function (){
-           angular.element("profilePicture").src=forwardPicture();
-       }; */
+         //  console.log(str);
+           picture(str); 
+        };
+       
+    function picture(str) {
+        $scope.pictureChange = str;
+    };
+    $(document).ready(function() {
+        var text_max = 140;
+        $('#textarea_feedback').html(text_max + ' characters remaining');
+        $('#text').keyup(function() {
+            var text_length = $('#text').val().length;
+            var text_remaining = text_max - text_length;
+            $('#textarea_feedback').html(text_remaining + ' characters remaining');
+        });
+    });   
 });
 
 twitterApp.controller('UserController', ['$scope', '$http', '$templateCache',
@@ -79,7 +83,7 @@ twitterApp.controller('UserController', ['$scope', '$http', '$templateCache',
         $scope.method = 'GET';
         $scope.url = 'user.php';  
         
-        $scope.fetch = function() {
+       // $scope.fetch = function() {
             $scope.code = null;
             $scope.response = null;
 
@@ -92,12 +96,7 @@ twitterApp.controller('UserController', ['$scope', '$http', '$templateCache',
                 $scope.data = data || "Request failed";
                 $scope.status = status;
             });
-        };
-        /*
-        $scope.updateModel = function(method, url) {
-            $scope.method = method;
-            $scope.url = url;
-        }; */
+       // }; 
     }
 ]);
 
@@ -130,7 +129,7 @@ twitterApp.controller('TweeterController', ['$scope', '$http', '$templateCache',
                     window.location.reload();
                 }
             });
-        };         
+        }; 
     }
 ]);
 
@@ -151,27 +150,16 @@ twitterApp.controller('FollowController', ['$scope', '$http', '$templateCache',
             $scope.data = data || "Request failed";
             $scope.status = status;
         });
-       // };       
-        $scope.forwardPicture = function (picture_id) {
-           var str = picture_id.replace(/_normal./g, '.');
-           console.log(str);
-           picture(str); 
-        };
-       
-        function picture(str) {
-            $scope.pictureChange = str;
-        };
-    }
-    
+       // };            
+    }    
 ]);
-
-
+/*
 twitterApp.filter('clearImage', function () {
     return function (text) {
         var str = text.replace(/_normal./g, '.');
         return str;
     };
-});
+});  */
 twitterApp.filter('links', function () {
     return function (text) {
         var str = text.replace(/@([^ ']+)/g, function(u, screen_name) {

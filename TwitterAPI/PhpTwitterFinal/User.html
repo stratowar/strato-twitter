@@ -14,24 +14,11 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/bootstrap1.css" type="text/css">
     </head>
     <body>
-        <div ng-controller="UserController">
-            <!--<select ng-model="method">
-              <option>GET</option>
-            </select>
-            <input type="hidden" ng-model="url" size="80"/>-->
-            <button id="fetchbtn" ng-click="fetch()">
-                Show me the User
-            </button>
-            <br>
-            <br>
-           <!--
-            <pre>http status code: {{status}}</pre>
-            <pre>http response data: {{data}}</pre>
-           -->
+        <div ng-controller="UserController">            
            <form class="form-horizontal" role="form">  
                 <div class="col-sm-1">    
                     <a href="#myModal" data-toggle="modal">
-                        <img ng-src="{{data.profile_image_url}}">
+                        <img ng-src="{{data.profile_image_url}}" ng-click="forwardPicture(data.profile_image_url)">
                     </a>
                     <div id="myModal" class="modal fade">
                         <div class="modal-dialog">
@@ -46,7 +33,7 @@ and open the template in the editor.
                                 </div>
                                 <div class="modal-body">
                                     <p>
-                                        <img ng-src="{{data.profile_image_url | clearImage}}" class="img-responsive" alt="Nemanja" width="712" height="712">
+                                        <img ng-src="{{pictureChange}}" ng-model="picture" class="img-responsive" alt="Nemanja" width="712" height="712">
                                     </p>                    
                                 </div>
                                 <div class="modal-footer">
@@ -62,18 +49,17 @@ and open the template in the editor.
                     <div class="col-md-1">
                         {{data.name}}
                     </div>
-                    <div class="col-md-1">
-                        {{data.screen_name}}     
+                    <div class="col-md-1" ng-bind-html="data.screen_name | linky | links">
                     </div>
-                    <div class="col-md-5">
-                        {{data.status.text}}                    
+                    <div ng-bind-html="data.status.text | linky | links" class="col-md-5">
                     </div>
                 </div>
            </form>
         </div>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="js/libs/angular.js/angular.js"></script>      
+        <script src="js/libs/angular.js/angular.js"></script>  
+        <script src="js/angular-sanitize.js"></script>
        <script src="js/Script2.js"></script>
     </body>
 </html>

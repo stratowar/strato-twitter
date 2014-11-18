@@ -23,7 +23,7 @@
                 <div class="row" ng-repeat="t in data" id="results">
                     <div class="col-xs-2 col-sm-1">    
                         <a href="#myModal" data-toggle="modal" class="img-circle">
-                            <img ng-src="{{t.user.profile_image_url}}" class="img-circle" alt="Nemanja">
+                            <img ng-src="{{t.user.profile_image_url}}" class="img-circle" alt="Nemanja" ng-click="forwardPicture(t.user.profile_image_url)">
                         </a>
                         <div id="myModal" class="modal fade">
                             <div class="modal-dialog">
@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <p>
-                                            <img ng-src="{{t.user.profile_image_url | clearImage}}" class="img-responsive" alt="Nemanja" width="712" height="712">
+                                            <img ng-src="{{pictureChange}}" ng-model="picture" class="img-responsive" alt="Nemanja" width="712" height="712">
                                         </p>                    
                                     </div>
                                     <div class="modal-footer">
@@ -67,7 +67,8 @@
                             <button id="deleteButton" class="btn btn-info" ng-click="deleteButton(t.id_str)"> 
                                 Delete tweet
                             </button>
-                        </div>                        
+                        </div>  
+                        <br>
                     </div>                    
                 </div>                
         </div>        
