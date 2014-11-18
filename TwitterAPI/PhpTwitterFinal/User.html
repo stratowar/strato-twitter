@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="application">
+    <head>
+        <title>User1</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">        
+        <link rel="stylesheet" href="css/bootstrap1.css" type="text/css">
+    </head>
+    <body>
+        <div ng-controller="UserController">
+            <!--<select ng-model="method">
+              <option>GET</option>
+            </select>
+            <input type="hidden" ng-model="url" size="80"/>-->
+            <button id="fetchbtn" ng-click="fetch()">
+                Show me the User
+            </button>
+            <br>
+            <br>
+           <!--
+            <pre>http status code: {{status}}</pre>
+            <pre>http response data: {{data}}</pre>
+           -->
+           <form class="form-horizontal" role="form">  
+                <div class="col-sm-1">    
+                    <a href="#myModal" data-toggle="modal">
+                        <img ng-src="{{data.profile_image_url}}">
+                    </a>
+                    <div id="myModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title">
+                                        Bigger picture
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        <img ng-src="{{data.profile_image_url | clearImage}}" class="img-responsive" alt="Nemanja" width="712" height="712">
+                                    </p>                    
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                        Close
+                                    </button>                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+                <div class="form-group">
+                    <div class="col-md-1">
+                        {{data.name}}
+                    </div>
+                    <div class="col-md-1">
+                        {{data.screen_name}}     
+                    </div>
+                    <div class="col-md-5">
+                        {{data.status.text}}                    
+                    </div>
+                </div>
+           </form>
+        </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="js/libs/angular.js/angular.js"></script>      
+       <script src="js/Script2.js"></script>
+    </body>
+</html>
