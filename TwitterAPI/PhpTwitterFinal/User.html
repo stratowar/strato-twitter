@@ -49,7 +49,8 @@ and open the template in the editor.
                     <div class="col-md-1">
                         {{data.name}}
                     </div>
-                    <div class="col-md-1" ng-bind-html="data.screen_name | linky | links">
+                    <div class="col-md-1">
+                        {{data.screen_name}}
                     </div>
                     <div ng-bind-html="data.status.text | linky | links" class="col-md-5">
                     </div>

@@ -50,8 +50,7 @@
                         <small>
                             {{t.user.name}}: 
                         </small>
-                        <small>
-                            {{t.user.description}}
+                        <small ng-bind-html="t.user.description | linky | links">
                         </small>
                         <br>
                         <h4> 
