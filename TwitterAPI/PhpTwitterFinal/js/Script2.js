@@ -39,8 +39,17 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
     };
     
     $(function () {
-
+        
         $('form').on('submit', function (e) {
+            var tweet = $scope.new_tweet;  
+                if (tweet == null || tweet == "") 
+                {//alert("Tweet text is empty");
+                    $("#alert").modal({                   
+                        "backdrop"  : "static",
+                        "keyboard"  : true,
+                        "show"      : true                   
+                    });  
+                } else {
             var form =  $('form').serialize().replace(/%23/g, 'kqkqkq');//.replace(/#/g, '%23');
             e.preventDefault();
 
@@ -50,19 +59,20 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
                 data: form,
                 success: function () {
                     //console.log(form);
-                    //alert('Tweet was sent');             
+                   //alert('Tweet was sent');             
                     angular.element("input#text").val('');  
                     window.location.reload();
                 }
-            });
-        });
+            });    
+        }
+        });        
     });
     
     $scope.forwardPicture = function (picture_id) {
-           var str = picture_id.replace(/_normal./g, '.');
-         //  console.log(str);
-           picture(str); 
-        };
+        var str = picture_id.replace(/_normal./g, '.');
+        //  console.log(str);
+        picture(str); 
+    };
        
     function picture(str) {
         $scope.pictureChange = str;
@@ -75,7 +85,10 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
             var text_remaining = text_max - text_length;
             $('#textarea_feedback').html(text_remaining + ' characters remaining');
         });
-    });   
+    });
+    $scope.cloudImage = {
+    background: 'url(css/cloud-wallpaper.png)'
+};
 });
 
 twitterApp.controller('UserController', ['$scope', '$http', '$templateCache',
@@ -126,7 +139,7 @@ twitterApp.controller('TweeterController', ['$scope', '$http', '$templateCache',
                 data: {tweet_id:tweet_id},
                 success: function () {
                 // console.log(tweet_id);
-                    window.location.reload();
+                window.location.reload();
                 }
             });
         }; 
@@ -161,7 +174,9 @@ twitterApp.filter('clearImage', function () {
     };
 });  */
 twitterApp.filter('links', function () {
+    
     return function (text) {
+        if(text) {
         var str = text.replace(/@([^ ']+)/g, function(u, screen_name) {
             var link = '<a target=blank href="http://twitter.com/intent/user?screen_name=' + screen_name + '">' + u + '</a>';
             return link;            
@@ -177,5 +192,6 @@ twitterApp.filter('links', function () {
                     
         }); 
         return str;
+    } 
     };
 }); 

@@ -12,15 +12,22 @@ and open the template in the editor.
             margin-bottom: 10px;
             padding-right: 15px;
             padding-left: 15px;
-        }
+            }
 #results .row {
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
+               margin-top: 15px;
+               margin-bottom: 15px;
+               }
 h1 {
-            color: #0084B4;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-        }
+    color: #0084B4;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    }
+body {
+      background: url('cloud-wallpaper.png') no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      }

@@ -5,7 +5,7 @@
         <title>Nemanja's Twitter</title>
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        
+        <link rel="stylesheet" href="css/smallCss.css">
         <link rel="stylesheet" href="css/bootstrap1.css" type="text/css">
     </head>
     <body ng-controller="controller" data-ng-init="loadFirstPage(page1)">
@@ -40,19 +40,34 @@
             </div>
             <div class="container">
                 <table>
-                        <td>
-                <form class="form-inline" role="form" name="form" id="form" accept-charset="ISO8859-5">
-                    <div class="form-group">
-                      <label for="tweet">Compose new Tweet:</label>
-                      <input type="text" class="form-control" name="tweet" id="text" placeholder="Enter your tweet" ng-model="new_tweet" maxlength="140">
+                    <td>
+                        <form class="form-inline" role="form" name="form" id="form" accept-charset="ISO8859-5">
+                            <div class="form-group">
+                              <label for="tweet">Compose new Tweet:</label>
+                              <input type="text" class="form-control" name="tweet" id="text" placeholder="Enter your tweet" ng-model="new_tweet" maxlength="140">
+                            </div>
+                            <button id="newTweetButton" type="submit" class="btn btn-info">Submit</button>
+                        </form>
+                    </td>                    
+                    <td>
+                        <div class="col-xs-12" id="textarea_feedback"></div>
+                    </td> 
+                </table>
+            </div>
+            <div id="alert" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- dialog body -->
+                        <div class="modal-body">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h3>Tweet is empty!!</h3>
+                        </div>
+                        <!-- dialog buttons -->
+                        <div class="modal-footer">
+                            <button type="button"  data-dismiss="modal" class="btn btn-info">OK</button>
+                        </div>
                     </div>
-                    <button id="newTweetButton" type="submit" class="btn btn-info">Submit</button>
-                </form>
-            </td>                    
-                        <td>
-            <div class="col-xs-12" id="textarea_feedback"></div>
-            </td> 
-                    </table>
+                </div>
             </div>
             <hr>
             <div class="row">
