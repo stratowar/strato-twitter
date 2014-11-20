@@ -1,3 +1,10 @@
+20.11.
+I have fixed the error that was appearing in the User page, before user data was loaded. This was fixed by simply adding an if condition to the links filter.
+Also, I have added an alert which will trigger if you try to send an empty tweet.
+And the background is changed.
+
+--------------------------------------------------------------------------------------------------------------------------------
+
 18.11.
 I have added the final version of the PhpTwitter project (PhpTwitterFinal inside the TwitterAPI folder, on the TwitterAPI branch) . In this version I have improved the presentation of tweets, added delete option, improved the User page, and added the Following (trending) page. There is an option for viewing the bigger picture of every user which has posted the tweet. Also you can post a tweet with the hashtag, @, and with Serbian letters. The links filter from TwitterWithoutPHP project is also included. Also, now you can see the remaining number of characters while typing the new tweet.
 
