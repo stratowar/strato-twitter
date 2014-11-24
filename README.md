@@ -1,7 +1,10 @@
 24.11.
 Improvements made to the PhpTwitterFinal project:
+
 -trim function has been added to the new tweet form,
+
 -a warning has been added when you are about to delete a tweet,
+
 -the new tweet form widens when user wants to type into it.
 
 Also, the JavaTwitter project is improved, and it now has the same functionality and options as the PhpTwitterFinal project. In this project I have applied a Route option of AngularJS.
