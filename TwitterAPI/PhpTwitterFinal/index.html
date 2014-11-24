@@ -67,7 +67,24 @@
                             <button id="deleteButton" class="btn btn-info" ng-click="deleteButton(t.id_str)"> 
                                 Delete tweet
                             </button>
-                        </div>  
+                         
+                        <div id="deleteModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- dialog body -->
+                                    <div class="modal-body">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h3>Tweet is about to be deleted!!</h3>
+                                    </div>
+                                    <!-- dialog buttons -->
+                                    <div class="modal-footer">
+                                        <button id="{{idChange}}" type="button"  data-dismiss="modal" class="btn btn-info" ng-click="deleteTweet(idChange)">OK</button>
+                                        <button type="button"  data-dismiss="modal" class="btn btn-info">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </div> 
                         <br>
                     </div>                    
                 </div>                

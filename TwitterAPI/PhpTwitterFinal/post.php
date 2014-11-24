@@ -20,7 +20,7 @@ function getConnectionWithAccessToken($cons_key, $cons_secret, $oauth_token, $oa
 $connection = getConnectionWithAccessToken($consumerkey, $consumersecret, $accesstoken, $accesstokensecret);
  
 $tweets = $connection->post("https://api.twitter.com/1.1/statuses/update.json?status=".$status."&display_coordinates=false");
-//echo ($status);
+//echo urldecode($tweets);
 //echo json_encode($tweets); 
 /*
 if ($tweets = 200) {

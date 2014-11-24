@@ -1,0 +1,133 @@
+<html ng-app="twitterApp">
+<head>
+    <title>
+        User Page
+    </title>
+</head>
+<body>  
+    <div  class="container" ng-controller="TwitterController">
+        <h1>
+            Nemanja Paripovic's tweets
+        </h1>
+        <div class="row">
+            <div class="col-xs-12">
+                &nbsp;&nbsp;&nbsp;
+                <button ng-click="connectButton()" id="connectButton" type="button" class="btn btn-primary">
+                    Connect Twitter
+                </button>
+                <button ng-click="refreshTimeline()" id="getTimelineButton" type="button" class="btn btn-info" style="display:none;">
+                    Refresh My Timeline
+                </button>
+                <button ng-click="signOut()" id="signOut" type="button" class="btn btn-primary" style="display:none;">
+                    Sign Out
+                </button>
+                <div class="container">
+                    <table>
+                        <td>
+                            <form class="form-inline" role="form" name="formButton" ng-submit="newTweetButton()">
+                                <div class="form-group">
+                                    <label for="tweet">
+                                        Compose new Tweet:
+                                    </label>
+                                    <input type="text" class="form-control" id="text" placeholder="Enter your tweet" ng-model="new_tweet" maxlength="140">                        
+                                </div>
+                                <button id="newTweetButton" type="submit" class="btn btn-primary">
+                                    New Tweet
+                                </button>
+                            </form>
+                        </td>                    
+                        <td>
+                            <div class="col-xs-12" id="textarea_feedback"></div>
+                        </td> 
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="jumbotron" id="results">
+                <div class="row" ng-repeat="t in tweets">
+                    <div class="col-xs-2 col-sm-1">    
+                        <button class="img-circle">
+                            <img ng-src="{{tweets[0].user.profile_image_url}}" class="img-circle" ng-click="forwardPicture(tweets[0].user.profile_image_url)">
+                        </button>
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title">
+                                            Bigger picture
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img ng-src="{{pictureChange}}" ng-model="picture" class="img-responsive" alt="Nemanja" width="712" height="712">
+                                        </p>                    
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                            Close
+                                        </button>                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-xs-10 col-sm-11">
+                        <small>
+                            {{t.user.name}}: 
+                        </small>
+                        <small>
+                            {{t.user.description}}
+                        </small>
+                        <br>
+                        <h4> 
+                            <div ng-bind-html="t.text | linky | links"></div> 
+                        </h4>                     
+                        <div id="{{t.id_str}}">                        
+                            <div class="tweet_body" ng-bind="t.id_str" style="display: none;">
+                            </div>
+                            <button id="deleteButton" class="btn btn-info" ng-click="deleteButton(t.id_str)"> 
+                                Delete tweet
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="alert" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- dialog body -->
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3>Tweet is empty!!</h3>
+                    </div>
+                    <!-- dialog buttons -->
+                    <div class="modal-footer">
+                        <button type="button"  data-dismiss="modal" class="btn btn-info">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="deleteModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- dialog body -->
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3>Tweet is about to be deleted!!</h3>
+                    </div>
+                    <!-- dialog buttons -->
+                    <div class="modal-footer">
+                        <button id="{{idChange}}" type="button"  data-dismiss="modal" class="btn btn-info" ng-click="deleteTweet(idChange)">OK</button>
+                        <button type="button"  data-dismiss="modal" class="btn btn-info">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

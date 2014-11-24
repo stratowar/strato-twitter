@@ -1,0 +1,72 @@
+<html ng-app="twitterApp">
+<head>
+    <title>
+        Following
+    </title>
+</head>
+<body>        
+    <div class="container" ng-controller="FollowController">
+        <div class="col-xs-12">
+                &nbsp;&nbsp;&nbsp;
+                <button ng-click="connectButton()" id="connectButton" type="button" class="btn btn-primary">
+                    Connect Twitter
+                </button>
+                <button ng-click="refreshTimeline()" id="getTimelineButton" type="button" class="btn btn-info" style="display:none;">
+                    Refresh My Timeline
+                </button>
+                <button ng-click="signOut()" id="signOut" type="button" class="btn btn-primary" style="display:none;">
+                    Sign Out
+                </button>
+        </div>
+        <br>
+        <br>
+        <h2>
+            What's happening:
+        </h2>
+        <div class="row">
+            <div class="col-xs-12">
+                &nbsp;&nbsp;&nbsp;  
+            </div>
+        </div>
+        <div class="row">            
+            <div class="row" ng-repeat="t in tweets" id="results">
+                <div class="col-xs-2 col-sm-1">    
+                    <button class="img-circle">
+                        <img ng-src="{{t.user.profile_image_url}}" class="img-circle" ng-click="forwardPicture(t.user.profile_image_url)">
+                    </button>
+                    <div id="myModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title">
+                                        Bigger picture
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+                                        <img ng-src="{{pictureChange}}" id="profilePicture" ng-model="picture" class="img-responsive" width="712" height="712">
+                                    </p>                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div class="col-xs-10 col-sm-11">
+                    <small>
+                        {{t.user.name}}: 
+                    </small>
+                    <small ng-bind-html="t.user.description | linky | links">
+                    </small>
+                    <br>
+                    <h4> 
+                        <div ng-bind-html="t.text | linky | links" maxlength="140"></div>
+                    </h4>                 
+                </div>                    
+            </div>                
+        </div>        
+    </div>
+</body>
+</html>

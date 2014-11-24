@@ -40,8 +40,23 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
     
     $(function () {
         
+        $('#text')
+            .focus(function()
+                {
+                   // $(this).attr('data-default', $(this).width());
+                    $(this).animate({ width: 650 }, 'slow');
+                })
+            .blur(function()
+                {
+                    /* lookup the original width */
+                   // var w = $(this).attr('data-default');
+                  // var text_length = $('#text').val().length;
+                    $(this).delay(200).animate({ width: 200 }, 'slow');
+                });
+        
         $('form').on('submit', function (e) {
-            var tweet = $scope.new_tweet;  
+            if ($scope.new_tweet) {
+            var tweet = $scope.new_tweet.trim();  
                 if (tweet == null || tweet == "") 
                 {//alert("Tweet text is empty");
                     $("#alert").modal({                   
@@ -50,7 +65,7 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
                         "show"      : true                   
                     });  
                 } else {
-            var form =  $('form').serialize().replace(/%23/g, 'kqkqkq');//.replace(/#/g, '%23');
+            var form =  $('form').serialize().replace(/%23/g, '{{encode}}');//.replace(/#/g, '%23');
             e.preventDefault();
 
             $.ajax({
@@ -65,6 +80,13 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
                 }
             });    
         }
+    } else {
+        $("#alert").modal({                   
+                        "backdrop"  : "static",
+                        "keyboard"  : true,
+                        "show"      : true                   
+                    }); 
+    }
         });        
     });
     
@@ -86,9 +108,10 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
             $('#textarea_feedback').html(text_remaining + ' characters remaining');
         });
     });
+    /*
     $scope.cloudImage = {
     background: 'url(css/cloud-wallpaper.png)'
-};
+}; */
 });
 
 twitterApp.controller('UserController', ['$scope', '$http', '$templateCache',
@@ -131,18 +154,32 @@ twitterApp.controller('TweeterController', ['$scope', '$http', '$templateCache',
             $scope.status = status;
         });
 
-        $scope.deleteButton = function (tweet_id) {    
-         // console.log(tweet_id);
+        $scope.deleteButton = function (tweet_id){
+     // console.log(tweet_id);
+            var tweet_id = tweet_id;
+            $("#deleteModal").modal({                   
+                "backdrop"  : "static",
+                "keyboard"  : true,
+                "show"      : true                   
+            });  
+            id(tweet_id); 
+        };
+       
+        function id(tweet_id) {
+            $scope.idChange = tweet_id;
+        };
+        
+        $scope.deleteTweet = function (tweet_id) {   
             $.ajax({
                 type: 'post',
                 url: 'delete.php',
                 data: {tweet_id:tweet_id},
                 success: function () {
                 // console.log(tweet_id);
-                window.location.reload();
+                    window.location.reload();
                 }
-            });
-        }; 
+            });        
+        };     
     }
 ]);
 
@@ -186,7 +223,7 @@ twitterApp.filter('links', function () {
             return link;
                     
         });
-        str = str.replace(/kqkqkq([^ ']+)/g, function (t, hash) {
+        str = str.replace(/{{encode}}([^ ']+)/g, function (t, hash) {
             var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + '#' + hash + '</a> ';
             return link;
                     

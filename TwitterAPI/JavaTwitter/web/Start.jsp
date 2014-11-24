@@ -17,9 +17,9 @@
     h.add(HTML.STYLESHEET, "css/smallCss.css", true);   
     h.add(HTML.HEADEND, "", true);
     out.println(h.showPage());
-    %>
+%>
     
-    <jsp:include page="index.html" />   
+<jsp:include page="index.jsp" />   
     
 <%    
     h.add(HTML.LINE, "", true);
@@ -27,6 +27,11 @@
     h.add(HTML.SCRIPT, "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js", true);
     h.add(HTML.SCRIPT, "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js", true);
     h.add(HTML.SCRIPT, "js/angular.js/angular.js", true);
-    h.add(HTML.SCRIPT, "js/Script.js", true);
+    h.add(HTML.SCRIPT, "js/app.js", true);
+    h.add(HTML.SCRIPT, "js/services.js", true);
+    h.add(HTML.SCRIPT, "js/controller.js", true);
+    h.add(HTML.SCRIPT, "js/angular-route.js", true);
+    h.add(HTML.SCRIPT, "js/angular-sanitize.js", true);
+    h.add(HTML.SCRIPT, "js/oauth.js", true);
     out.println(h.showPage());
 %>
