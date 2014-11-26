@@ -64,6 +64,7 @@ app.controller('TwitterController', function($route, $scope, $q, twitterService)
                         });  
                     } 
                     else {
+                        tweet = encodeURIComponent($scope.new_tweet);
                         twitterService.postTweet(tweet).then(function(){
                             $scope.refreshTimeline();
                         });

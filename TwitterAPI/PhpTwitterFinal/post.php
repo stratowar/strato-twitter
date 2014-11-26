@@ -5,7 +5,7 @@ require_once("js/Script2.js");
 $twitteruser = "stratowar";
 $notweets = 10;
 $status1 = $_POST['tweet'];
-$status = htmlspecialchars($status1, ENT_COMPAT, 'ISO-8859-1', true);
+$status = urlencode($status1);
 $consumerkey = "GyMq5aB6WcBDGqgOHzvjRACqD";
 $consumersecret = "Z9SjTNSZ1XlYK52UbpI7DkmB6DbZJBPB6pKSDoGoEBvZ9qoyE7";
 $accesstoken = "2799661822-1Z6PtHHU3QAF7HDe5aNlkWeEWINAgK337uBUFYt";

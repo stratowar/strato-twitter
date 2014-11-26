@@ -32,17 +32,27 @@ app.filter('links', function () {
                 var link = '<a target=blank href="http://twitter.com/intent/user?screen_name=' + screen_name + '">' + u + '</a>';
                 return link;            
             });
-            str = str.replace(/[^&]#([^ ']+)/g, function(t, hash) {
+            str = str.replace(/#([^ &0-9']+)/g, function(t, hash) {
                 var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + t + '</a> ';
                 return link;
-
-            });
-            str = str.replace(/{{encode}}([^ ']+)/g, function (t, hash) {
-                var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + '#' + hash + '</a> ';
+            }); /*
+            str = str.replace(/#([^ &0-9']+)/g, function(t, hash) {
+                var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + t + '</a> ';
                 return link;
-
-            }); 
+            }); */
             return str;
         } 
     };
 }); 
+/*
+app.filter('recognizeHashtag', function () {
+    return function (text) {
+        if(text) {
+            var str = text.replace(/#([^ 0-9']+)/g, function(t, hash) {
+                var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + t + '</a> ';
+                return link;
+            });
+            return str;
+        } 
+    };
+});  */

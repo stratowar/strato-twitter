@@ -39,18 +39,13 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
     };
     
     $(function () {
-        
         $('#text')
             .focus(function()
                 {
-                   // $(this).attr('data-default', $(this).width());
                     $(this).animate({ width: 650 }, 'slow');
                 })
             .blur(function()
                 {
-                    /* lookup the original width */
-                   // var w = $(this).attr('data-default');
-                  // var text_length = $('#text').val().length;
                     $(this).delay(200).animate({ width: 200 }, 'slow');
                 });
         
@@ -59,13 +54,13 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
             var tweet = $scope.new_tweet.trim();  
                 if (tweet == null || tweet == "") 
                 {//alert("Tweet text is empty");
-                    $("#alert").modal({                   
+                    $('#alert').modal({                   
                         "backdrop"  : "static",
                         "keyboard"  : true,
                         "show"      : true                   
                     });  
                 } else {
-            var form =  $('form').serialize().replace(/%23/g, '{{encode}}');//.replace(/#/g, '%23');
+            var form =  $('form').serialize();
             e.preventDefault();
 
             $.ajax({
@@ -81,7 +76,7 @@ twitterApp.controller('controller', function ($route, $scope, $templateCache, $h
             });    
         }
     } else {
-        $("#alert").modal({                   
+        $('#alert').modal({                   
                         "backdrop"  : "static",
                         "keyboard"  : true,
                         "show"      : true                   
@@ -155,9 +150,9 @@ twitterApp.controller('TweeterController', ['$scope', '$http', '$templateCache',
         });
 
         $scope.deleteButton = function (tweet_id){
-     // console.log(tweet_id);
+            //console.log(tweet_id);
             var tweet_id = tweet_id;
-            $("#deleteModal").modal({                   
+            $('#deleteModal').modal({                   
                 "backdrop"  : "static",
                 "keyboard"  : true,
                 "show"      : true                   
@@ -218,16 +213,18 @@ twitterApp.filter('links', function () {
             var link = '<a target=blank href="http://twitter.com/intent/user?screen_name=' + screen_name + '">' + u + '</a>';
             return link;            
         });
-        str = str.replace(/[^&]#([^ ']+)/g, function(t, hash) {
+        str = str.replace(/#([^ &0-9']+)/g, function(t, hash) {
             var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + t + '</a> ';
             return link;
-                    
-        });
-        str = str.replace(/{{encode}}([^ ']+)/g, function (t, hash) {
-            var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + '#' + hash + '</a> ';
-            return link;
-                    
-        }); 
+        });/* 
+        str = str.replace(/#([^ 0-9']+)/g, function(t, hash) {
+                var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + t + '</a> ';
+                return link;
+            });
+    /*    str = str.replace(/[^(#&)]#([^ ']+)/g, function(t, hash) {
+                var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + t + '</a> ';
+                return link;
+            });    */
         return str;
     } 
     };

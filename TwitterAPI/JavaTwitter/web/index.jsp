@@ -7,11 +7,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@page import="HTML.*" %>
-<%! HTML h = new HTML("Tweeter page", " ng-app='twitterApp'");%>
+<%! HTML h = new HTML("Tweeter page", " ");%>
 <%
     h.add(HTML.HEADEND, "", true);
 %>
-   
+<div ng-app="twitterApp">
     <nav ng-controller="TwitterController" id="myNavbar" class="navbar navbar-default" role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="container">
@@ -36,6 +36,7 @@
     </nav>    
     <div class="jumbotron" ng-view>
     </div>
+</div>
 <%
     out.println(h.showPage());
 %>

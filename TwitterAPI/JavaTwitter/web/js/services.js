@@ -35,7 +35,7 @@ angular.module('twitterApp.services', []).factory('twitterService', function($q)
                 deferred.resolve(data);
             });
             //return the promise of the deferred object
-            //console.log(deferred.promise);
+            
             return deferred.promise;
         },
         getTheWall: function () {
@@ -53,18 +53,13 @@ angular.module('twitterApp.services', []).factory('twitterService', function($q)
         postTweet: function (tweet) {
             //create a deferred object using Angular's $q service
             var deferred = $q.defer();
-            //$document.ready(
-            //        function(){
-            //            $("#newTweetButton").click(function(){
-            
-            //            });
-            //        });
             var promise = authorizationResult.post('/1.1/statuses/update.json?status=' + tweet).done(function(data) { 
                 // when the data is retrieved resolved the deferred object
                 deferred.resolve(data);
             });
             //return the promise of the deferred object
             return deferred.promise;
+            
         },
         deleteTweet: function (deleteTweet) {
             //create a deferred object using Angular's $q service
