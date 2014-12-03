@@ -71,8 +71,14 @@ angular.module('twitterApp.services', []).factory('twitterService', function($q)
             });
             //return the promise of the deferred object
             return deferred.promise;
+        },
+        modal: function(name){
+            $(name).modal({                   
+                        "backdrop"  : "static",
+                        "keyboard"  : true,
+                        "show"      : true                   
+                    }); 
         }
-        
     };
 });
 

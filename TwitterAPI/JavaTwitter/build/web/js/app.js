@@ -44,15 +44,15 @@ app.filter('links', function () {
         } 
     };
 }); 
-/*
+
 app.filter('recognizeHashtag', function () {
     return function (text) {
         if(text) {
-            var str = text.replace(/#([^ 0-9']+)/g, function(t, hash) {
+            var str = text.replace(/[&]#([^ &']+)/g, function(t, hash) {
                 var link = '<a target=blank href="https://twitter.com/hashtag/' + hash + '?src=hash">' + t + '</a> ';
                 return link;
             });
             return str;
         } 
     };
-});  */
+});  

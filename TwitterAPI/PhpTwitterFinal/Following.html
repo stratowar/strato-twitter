@@ -22,7 +22,7 @@
         <div class="row">            
                 <div class="row" ng-repeat="t in data" id="results">
                     <div class="col-xs-2 col-sm-1">    
-                        <a href="#myModal" data-toggle="modal" class="img-circle" ng-click="forwardPicture(t.user.profile_image_url)">
+                        <a href="" data-toggle="modal" class="img-circle" ng-click="forwardPicture(t.user.profile_image_url)">
                             <img ng-src="{{t.user.profile_image_url}}" class="img-circle">
                         </a>
                         <div id="myModal" class="modal fade" data-ng-init="picture()">
@@ -61,6 +61,7 @@
         </div>        
     </div>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

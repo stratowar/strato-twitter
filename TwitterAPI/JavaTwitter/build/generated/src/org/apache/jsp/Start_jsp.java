@@ -53,30 +53,29 @@ public final class Start_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write('\n');
       out.write('\n');
 
-    h.add(HTML.STYLESHEET, "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", true);
-    h.add(HTML.STYLESHEET, "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css", true);
-    h.add(HTML.STYLESHEET, "css/smallCss.css", true);   
-    h.add(HTML.HEADEND, "", true);
+    h.add(HTML.STYLESHEET, "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", false);
+    h.add(HTML.STYLESHEET, "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css", false);
+    h.add(HTML.STYLESHEET, "css/smallCss.css", false);   
+    h.add(HTML.HEADEND, "", false);
     out.println(h.showPage());
-    
+
       out.write("\n");
       out.write("    \n");
-      out.write("    ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "index.jsp", out, false);
       out.write("   \n");
       out.write("    \n");
     
     h.add(HTML.LINE, "", true);
     h.add(HTML.AUTHOR, "", true);
-    h.add(HTML.SCRIPT, "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js", true);
-    h.add(HTML.SCRIPT, "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js", true);
-    h.add(HTML.SCRIPT, "js/angular.js/angular.js", true);
-    h.add(HTML.SCRIPT, "js/app.js", true);
-    h.add(HTML.SCRIPT, "js/services.js", true);
-    h.add(HTML.SCRIPT, "js/controller.js", true);
-    h.add(HTML.SCRIPT, "js/angular-route.js", true);
-    h.add(HTML.SCRIPT, "js/angular-sanitize.js", true);
-    h.add(HTML.SCRIPT, "js/oauth.js", true);
+    h.add(HTML.SCRIPT, "http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js", false);
+    h.add(HTML.SCRIPT, "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js", false);
+    h.add(HTML.SCRIPT, "js/angular.js/angular.js", false);
+    h.add(HTML.SCRIPT, "js/app.js", false);
+    h.add(HTML.SCRIPT, "js/services.js", false);
+    h.add(HTML.SCRIPT, "js/controller.js", false);
+    h.add(HTML.SCRIPT, "js/angular-route.js", false);
+    h.add(HTML.SCRIPT, "js/angular-sanitize.js", false);
+    h.add(HTML.SCRIPT, "js/oauth.js", false);
     out.println(h.showPage());
 
       out.write('\n');

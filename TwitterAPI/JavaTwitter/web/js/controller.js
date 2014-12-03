@@ -57,11 +57,7 @@ app.controller('TwitterController', function($route, $scope, $q, twitterService)
                     var tweet = $scope.new_tweet.trim();  
                     if (tweet == null || tweet == "") 
                     {//alert("Tweet text is empty");
-                        $("#alert").modal({                   
-                            "backdrop"  : "static",
-                            "keyboard"  : true,
-                            "show"      : true                   
-                        });  
+                         twitterService.modal("#alert");
                     } 
                     else {
                         tweet = encodeURIComponent($scope.new_tweet);
@@ -71,11 +67,7 @@ app.controller('TwitterController', function($route, $scope, $q, twitterService)
                     }
                 } 
                 else {
-                    $("#alert").modal({                   
-                        "backdrop"  : "static",
-                        "keyboard"  : true,
-                        "show"      : true                   
-                    }); 
+                    twitterService.modal("#alert");
                 }
             }
         });  
@@ -84,11 +76,7 @@ app.controller('TwitterController', function($route, $scope, $q, twitterService)
     $scope.deleteButton = function (tweet_id){
      // console.log(tweet_id);
             var tweet_id = tweet_id;
-            $("#deleteModal").modal({                   
-                "backdrop"  : "static",
-                "keyboard"  : true,
-                "show"      : true                   
-            });  
+            twitterService.modal("#deleteModal");
             id(tweet_id); 
         };
        
@@ -139,11 +127,7 @@ app.controller('TwitterController', function($route, $scope, $q, twitterService)
         var str = picture_id.replace(/_normal./g, '.');
         //  console.log(str);
         picture(str); 
-        $("#myModal").modal({                   
-                "backdrop"  : "static",
-                "keyboard"  : true,
-                "show"      : true                   
-            });  
+        twitterService.modal("#myModal");
     };
        
     function picture(str) {
@@ -211,11 +195,7 @@ app.controller('FollowController', function ($scope, $q, twitterService) {
         var str = picture_id.replace(/_normal./g, '.');
         //  console.log(str);
         picture(str); 
-        $("#myModal").modal({                   
-                "backdrop"  : "static",
-                "keyboard"  : true,
-                "show"      : true                   
-            }); 
+        twitterService.modal("#myModal");
     };
        
     function picture(str) {

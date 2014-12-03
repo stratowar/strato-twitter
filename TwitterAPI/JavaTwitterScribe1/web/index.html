@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Nemanja's Tweets
+    </title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">    
+    <link rel="stylesheet" href="css/smallCss.css">
+</head>
+<body>
+    <div ng-app="twitterApp">
+    <div class="container" ng-controller="TwitterController">
+        <h1>
+            Nemanja Paripovic's tweets
+        </h1>
+        <div class="row">
+            <div class="col-xs-12">
+                &nbsp;&nbsp;&nbsp;   
+            </div>
+        </div>
+         <small>
+                            {{responseBody}}
+                        </small>
+        <!--
+        <div class="row">
+                <div class="row" ng-repeat="t in data" id="results">
+                    <div class="col-xs-2 col-sm-1">    
+                        <a href="" data-toggle="modal" class="img-circle">
+                            <img ng-src="{{t.user.profile_image_url}}" class="img-circle" alt="Nemanja" ng-click="forwardPicture(t.user.profile_image_url)">
+                        </a>
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                        </button>
+                                        <h4 class="modal-title">
+                                            Bigger picture
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>
+                                            <img ng-src="{{pictureChange}}" ng-model="picture" class="img-responsive" alt="Nemanja" width="712" height="712">
+                                        </p>                    
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                            Close
+                                        </button>                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-xs-10 col-sm-11">
+                        <small>
+                            {{t.name}}: 
+                        </small>
+                        <small>
+                            {{t.user.description}}
+                        </small>
+                        <br>
+                        <h4> 
+                            <div ng-bind-html="t.text | linky | links"></div>
+                        </h4>                     
+                        <div id="{{t.id_str}}">                        
+                            <div class="tweet_body" ng-bind="t.id_str" name="delete" style="display: none;">
+                            </div>
+                            <button id="deleteButton" class="btn btn-info" ng-click="deleteButton(t.id_str)"> 
+                                Delete tweet
+                            </button>
+                            <div id="deleteModal" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <!-- dialog body -->
+                                        <!--
+                                        <div class="modal-body">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h3>Tweet is about to be deleted!!</h3>
+                                        </div>
+                                        <!-- dialog buttons -->
+                                        <!--
+                                        <div class="modal-footer">
+                                            <button id="{{idChange}}" type="button"  data-dismiss="modal" class="btn btn-info" ng-click="deleteTweet(idChange)">OK</button>
+                                            <button type="button"  data-dismiss="modal" class="btn btn-info">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <br>
+                    </div>                    
+                </div>                
+        </div>    
+        -->
+    </div>
+</div>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="script/bootstrap.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="script/angular-sanitize.js"></script>
+    <script src="script/javascript.js"></script>
+    <script src="script/services.js"></script>
+    <script src="script/controller.js"></script>
+    <script src="script/angular-route.js"></script>
+</body>
+</html>
