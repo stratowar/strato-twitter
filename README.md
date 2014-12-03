@@ -1,3 +1,8 @@
+03.12.
+I have started a new project. In this project I am trying to make a connection to the Twitter API using JAVA. For now I have managed to connect to the Twitter API, and to get a response in a JSON format. 
+
+--------------------------------------------------------------------------------------------------------------------------------
+
 24.11.
 Improvements made to the PhpTwitterFinal project:
 
