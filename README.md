@@ -1,5 +1,6 @@
 All my projects presented here have been realized in the NetBeans IDE. To start them you should create a new project of the same type in NetBeans, and simply add all the files from one project to it. Also, you should add certain libraries to the project. In the JavaTwitterScribe project, you should add HTML.jar from the lib folder, and commons-codec-1.10.jar from src/java folder. In the JavaTwitter project you should add HTML.jar file from lib/HTML folder.
 
+
 --------------------------------------------------------------------------------------------------------------------------------
 
 03.12.
